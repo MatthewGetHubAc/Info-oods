@@ -40,8 +40,11 @@ def purchaseConfirm():
     for item in purchaseBox.items:
         previous_content.append(item)
     purchaseBox.clear()
-    purchaseBox.append("Thanks for purchasing!")
-    purchaseBox.repeat(2000, purchaseBox.clear)
+    purchaseBox.hide()
+    thanks = ListBox(purchaseMenu, width=375, height=200, items=["Thanks for purchasing!"])
+    thanks.text_color = "white"
+    thanks.text_size = 25
+    thanks.repeat(2000, thanks.destroy)
 
 purchaseButtonBox = Box(purchaseMenu, width="fill")
 purchaseButton = PushButton(purchaseButtonBox, command=purchaseConfirm, text="Purchase Now", width=10)
@@ -72,12 +75,15 @@ subway = "Subway (2.6)"
 chickfila = "Chick-Fil-A (4.3)"
 
 def appendFood1(selected):
+    purchaseBox.show()
     purchaseBox.append(combo1.value)
 
 def appendFood2(selected):
+    purchaseBox.show()
     purchaseBox.append(combo2.value)
 
 def appendFood3(selected):
+    purchaseBox.show()
     purchaseBox.append(combo3.value)
 
 combo1 = Combo(itemMenu, options=["Taco (170cal.)", "Blast (150cal.)", "Burrito (350cal.)"], align="top", command=appendFood1)
